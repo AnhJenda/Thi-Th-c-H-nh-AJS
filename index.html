@@ -45,8 +45,15 @@
                                 <input type="text" ng-model="qty" id="qty"><br>
                                 <span>Enter The Coffee Size</span>
                                 <input type="text" ng-model="size" id="size" placeholder="(Pay more 2$ for size L)"><br>
-                                <input type="button" id="submit" value="submit" ng-click="Calc()">
-                                <h3>Total: {{total | currency:'$ '}}</h3>
+                                <input type="button" id="calculate" value="calculate" ng-click="Calc()">
+                                <h4>Total: {{total | currency:'$ '}}</h4><br>
+                                <span>Customer's name</span>
+                                <input type="text"><br>
+                                <span>Phone Number</span>
+                                <input type="number"><br>
+                                <span>Delivery address</span>
+                                <input type="text">
+                                <input type="button" value="submit" ng-click="Calc()">
                             </form>
                         </div>
                     </div>
@@ -99,8 +106,6 @@
                             $scope.total = $scope.qty * 7;
                             break;
                     }
-                    return $scope.total;
-
                 } else if ($scope.size === 'L' || $scope.size === 'l') {
                     switch ($scope.code) {
                         case 'Cap' :
@@ -119,7 +124,6 @@
                             $scope.total = $scope.qty * 9;
                             break;
                     }
-                    return $scope.total;
                 }
             };
         });
