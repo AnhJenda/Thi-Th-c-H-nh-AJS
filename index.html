@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thi Thực Hành AJS</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2 class="display-4">The Coffee House</h2>
+        </div>
+        <div class="row">
+            <div class="col-3 order-1">
+                <h3>Menu</h3>
+                <ul id="coffee-list" class="list-group"></ul>
+            </div>
+            <div class="col-9 order-2">
+                <div id="coffee">
+                    <div class="row">
+                        <div class="coffee-info col-8">
+                            <div class="coffee-pic">
+                                <img id="coffee-img" alt="">
+                            </div>
+                            <div class="coffee-text">
+                                <h2 id="coffee-name"></h2>
+                                <h3 id="coffee-code"></h3>
+                                <h3 id="coffee-cost"></h3>
+                                <h3 id="coffee-size"></h3>
+                            </div>
+                        </div>
+
+                        <div class="form col-4">
+                            <form action="#" id="coffee-form">
+                                <span>Enter Coffee Code: </span>
+                                <input type="text" ng-model="code" id="code"><br>
+                                <span>Enter The Quantity You Want To Buy</span>
+                                <input type="text" ng-model="qty" id="qty"><br>
+                                <span>Enter The Coffee Size</span>
+                                <input type="text" ng-model="size" id="size" placeholder="(Pay more 2$ for size L)"><br>
+                                <input type="button" id="submit" value="submit" ng-click="Calc()">
+                                <h3>Total: {{total | currency:'$ '}}</h3>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h2>Quyền Sở Hữu Và Thông Tin Liên Hệ</h2>
+            <div class="row">
+                <div class="col-5 offset-1 owner">
+                    <h3>Ownership</h3>
+                    <h6>Bản Quyền Thuộc &copy;2021 AnhJenda & c.o.</h6>
+                    <h6>Mọi sự sao chép cần được sự đồng ý của chủ sở hữu.</h6>
+                </div>
+                <div class="col-5 offset-1 contact">
+                    <h3>Contact Details</h3>
+                    <ul>
+                        <li>Address: Yen Nghia - Ha Dong - Ha Noi</li>
+                        <li>Phone: (+84) 395.100.761</li>
+                        <li><a href="mailto:quanganh.nqc99@gmail.com">Email: quanganh.nqc99@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.total = '';
+            $scope.code = '';
+            $scope.qty = 0;
+            $scope.size = '';
+            $scope.Calc = function () {
+                if ($scope.size === 'M' || $scope.size === 'm'){
+                    switch ($scope.code) {
+                        case 'Cap' :
+                            $scope.total = $scope.qty * 20;
+                            break;
+                        case 'Mac' :
+                            $scope.total = $scope.qty * 15;
+                            break;
+                        case 'Lat' :
+                            $scope.total = $scope.qty * 10;
+                            break;
+                        case 'Den' :
+                            $scope.total = $scope.qty * 5;
+                            break;
+                        case 'Nau' :
+                            $scope.total = $scope.qty * 7;
+                            break;
+                    }
+                    return $scope.total;
+
+                } else if ($scope.size === 'L' || $scope.size === 'l') {
+                    switch ($scope.code) {
+                        case 'Cap' :
+                            $scope.total = $scope.qty * 22;
+                            break;
+                        case 'Mac' :
+                            $scope.total = $scope.qty * 17;
+                            break;
+                        case 'Lat' :
+                            $scope.total = $scope.qty * 12;
+                            break;
+                        case 'Den' :
+                            $scope.total = $scope.qty * 7;
+                            break;
+                        case 'Nau' :
+                            $scope.total = $scope.qty * 9;
+                            break;
+                    }
+                    return $scope.total;
+                }
+            };
+        });
+    </script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
